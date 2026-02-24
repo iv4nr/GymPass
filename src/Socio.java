@@ -1,6 +1,6 @@
 public class Socio {
 
-    private int numSocio;
+    public int numSocio;
     private String nombre;
 
     /**
