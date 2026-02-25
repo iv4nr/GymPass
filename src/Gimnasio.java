@@ -101,6 +101,11 @@ public class Gimnasio {
         return miembroAgregadoOK;
     }
 
+    /**
+     * Expulsa el socio por el numero de socio si existe, sino existe devuelve null
+     * @param numSocio numero de socio
+     * @return socio expulsado o null
+     */
     public Socio expulsarSocio(int numSocio) {
         Socio socioEliminado = null;
         boolean continuarBuscando = true;
