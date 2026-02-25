@@ -137,10 +137,59 @@ public class Gimnasio {
         return resultado;
     }
 
+    /**
+     *Comprueba si el codigo de sala ya existe
+     * @param codigoSala codigo de la sala
+     * @return resultado
+     */
+    public boolean contieneSala(int codigoSala) {
+        boolean resultado = false;
 
+        for (int i = 0; i < CANT_SALAS && !resultado; i++) {
+            if( salas[i] != null && salas[i].getCodigoSala() == codigoSala ){
+                resultado = true;
+            }
+        }
 
+        return resultado;
+    }
 
+    /**
+     * Busca la primera posicion libre de la salas
+     * @return la primera posicion libre
+     */
+    private int buscarPrimeraPosicionLibreSalas() {
+        int primeraPosicionSalaLibre = -1;
+        boolean continuarBuscando = true;
 
+        for (int i = 0; i < CANT_SALAS && continuarBuscando; i++) {
+            if( salas[i] == null ){
+                primeraPosicionSalaLibre = i;
+                continuarBuscando = false;
+            }
+        }
+
+        return primeraPosicionSalaLibre;
+    }
+
+    /**
+     * Incorpora una sala
+     * @param sala sala a agregar
+     * @return resultado
+     */
+    public boolean incorporarSala(Sala sala) {
+        boolean resultado = false;
+        int posicionSala;
+
+        posicionSala = buscarPrimeraPosicionLibreSalas();
+
+        if( ! contieneSala(sala.getCodigoSala()) && posicionSala >= 0 ){
+            salas[posicionSala] = sala;
+            resultado = true;
+        }
+
+        return resultado;
+    }
 
     @Override
     public String toString() {
