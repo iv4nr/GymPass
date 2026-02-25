@@ -191,6 +191,56 @@ public class Gimnasio {
         return resultado;
     }
 
+    public String obtenerInforme(){
+        StringBuilder sb = new StringBuilder("\n" +
+                "###################################" +
+                "\n# Información del Gimnasio:       #\n" +
+                "###################################");
+
+        sb.append(listarSocios());
+        sb.append(listarSalas());
+        sb.append("\nEl ID del Responable es: " + this.responableId);
+        sb.append("\n###################################");
+        sb.append("\n");
+
+        return sb.toString();
+    }
+
+    /**
+     *Enumera la lista de socios
+     * @return la lista de socios
+     */
+    public String listarSocios() {
+        StringBuilder sb = new StringBuilder("\nSocios: \n");
+
+        for (int i = 0; i < CANT_SOCIOS; i++) {
+            if( socios[i] != null ){
+                sb.append("\t");
+                sb.append(socios[i].toString());
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Enumera la lista de salas
+     * @return la lista de salas
+     */
+    public String listarSalas(){
+        StringBuilder sb = new StringBuilder("\nSalas: \n");
+
+        for (int i = 0; i < CANT_SALAS; i++) {
+            if( salas[i] != null ){
+                sb.append("\t");
+                sb.append(salas[i].toString());
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
+    }
+
+
     @Override
     public String toString() {
         return "Gimnasio {" + "Codigo de Gimnasio: " + codigo +
