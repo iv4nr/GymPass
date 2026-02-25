@@ -87,7 +87,6 @@ public class Gimnasio {
         boolean miembroAgregadoOK;
         int primeraPosicionLibre;
 
-        // comprobar que haya hueco
         if( comprobarSiHayHuecoClicker() ){
             if( contieneSocio(socio.getNumSocio()) == false ){
                 primeraPosicionLibre = buscarPrimeraPosicionLibre();
@@ -101,6 +100,25 @@ public class Gimnasio {
         }
         return miembroAgregadoOK;
     }
+
+    public Socio expulsarSocio(int numSocio) {
+        Socio socioEliminado = null;
+        boolean continuarBuscando = true;
+
+        for (int i = 0; i < CANT_SOCIOS && continuarBuscando; i++) {
+            if( socios[i].getNumSocio() == numSocio ){
+                socioEliminado = socios[i];
+                socios[i] = null;
+                continuarBuscando = false;
+            }
+        }
+
+        return socioEliminado;
+    }
+
+
+
+
 
 
 
