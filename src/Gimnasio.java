@@ -33,7 +33,7 @@ public class Gimnasio {
      * @param numSocio codigo de socio
      * @return resultado
      */
-    public boolean contieneSocio(int numSocio ) {
+    public boolean existeSocio(int numSocio ) {
         boolean resultado = false;
 
         for (int i = 0; i < CANT_SOCIOS && !resultado; i++) {
@@ -88,7 +88,7 @@ public class Gimnasio {
         int primeraPosicionLibre;
 
         if( comprobarSiHayHuecoClicker() ){
-            if( contieneSocio(socio.getNumSocio()) == false ){
+            if( existeSocio(socio.getNumSocio()) == false ){
                 primeraPosicionLibre = buscarPrimeraPosicionLibre();
                 socios[primeraPosicionLibre] = socio;
                 miembroAgregadoOK = true;
@@ -121,6 +121,21 @@ public class Gimnasio {
         return socioEliminado;
     }
 
+    /**
+     * Designa el responable por numero de socio
+     * @param numSocio numero de socio
+     * @return resultado
+     */
+    public boolean designarResponsable(int numSocio) {
+        boolean resultado = false;
+
+        if( existeSocio(numSocio)){
+            responableId = numSocio;
+            resultado = true;
+        }
+
+        return resultado;
+    }
 
 
 
